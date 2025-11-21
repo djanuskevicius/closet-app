@@ -51,7 +51,7 @@ export default function Wardrobe() {
   }
 
   return (
-    <>
+    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <div>Wardrobe</div>
       <div>
         <strong>Current clothing items:</strong>
@@ -82,6 +82,6 @@ export default function Wardrobe() {
         ))}
       </ul>
       <Form action="add" />
-    </>
+    </div>
   );
 }
