@@ -13,10 +13,23 @@ const initialFormData: Omit<Clothing, "id"> = {
   notes: "",
 };
 
-export default function Form() {
-  const { addClothing } = useWardrobe();
-  const [formData, setFormData] =
-    useState<Omit<Clothing, "id">>(initialFormData);
+export default function Form({
+  action,
+  item,
+  onDone,
+}: {
+  action: "add" | "edit";
+  item?: Clothing;
+  onDone?: () => void;
+}) {
+  const { addClothing, updateClothing } = useWardrobe();
+  const [formData, setFormData] = useState<Omit<Clothing, "id">>(() => {
+    if (action === "edit" && item) {
+      return item;
+    } else {
+      return initialFormData;
+    }
+  });
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -33,14 +46,21 @@ export default function Form() {
     });
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (action === "add") {
+      addClothing(formData);
+      setFormData(initialFormData);
+    } else if (action === "edit") {
+      if (!item) return;
+      if (!onDone) return;
+      updateClothing(item.id, formData);
+      onDone();
+    }
+  };
+
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        addClothing(formData);
-        setFormData(initialFormData);
-      }}
-    >
+    <form onSubmit={(e) => handleSubmit(e)}>
       <input
         type="text"
         name="name"
@@ -91,17 +111,9 @@ export default function Form() {
         value={formData.notes}
         onChange={handleChange}
       />
-      <button type="submit">Add Clothing Item</button>
+      <button type="submit">
+        {action === "add" ? "Add " : "Edit "}Clothing Item
+      </button>
     </form>
   );
 }
-
-// export type Clothing = {
-//   id: string;
-//   name: string;
-//   category: "top" | "bottom" | "outerwear" | "shoes" | "accessory";
-//   color: string;
-//   brand: string;
-//   imageUrl: string;
-//   notes?: string;
-// };

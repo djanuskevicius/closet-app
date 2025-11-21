@@ -1,7 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import type { Clothing } from "@/types/clothing";
 import { useWardrobe } from "@/components/context/WardrobeContext";
+import Form from "@/components/Form";
 
 export default function ItemCard({ item }: { item: Clothing }) {
+  const [isEditing, setIsEditing] = useState(false);
   const { removeClothing } = useWardrobe();
   return (
     <li className="flex items-center gap-4">
@@ -18,6 +23,10 @@ export default function ItemCard({ item }: { item: Clothing }) {
       >
         X
       </button>
+      <button onClick={() => setIsEditing(!isEditing)}>Edit</button>
+      {isEditing && (
+        <Form action="edit" item={item} onDone={() => setIsEditing(false)} />
+      )}
     </li>
   );
 }

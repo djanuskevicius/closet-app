@@ -19,7 +19,7 @@ export default function Wardrobe() {
           <ItemCard key={item.id} item={item} />
         ))}
       </ul>
-      <Form />
+      <Form action="add" />
     </>
   );
 }
