@@ -10,7 +10,9 @@ export default function ItemCard({ item }: { item: Clothing }) {
   const { removeClothing } = useWardrobe();
   return (
     <li className="flex items-center gap-4">
-      <p>{item.name}</p>
+      <p>
+        {item.brand} {item.name}
+      </p>
       {item.imageUrl && (
         <img src={item.imageUrl} alt={item.name} width={100} height={100} />
       )}
