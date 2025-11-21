@@ -40,8 +40,8 @@ I am keeping the repo public to track my progress and document my growth as a de
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/<djanuskevicius>/<closet-app>.git
-   cd <closet-app>
+   git clone https://github.com/djanuskevicius/closet-app.git
+   cd closet-app
    ```
 
 2. Install dependencies  
