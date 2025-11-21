@@ -2,10 +2,10 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="bg-black text-white">
+    <main className="bg-black text-white">
       {/* hero section */}
       <section className="max-w-[1440px] mx-auto px-8 pt-24 pb-32">
-        <div className="grid grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* left column */}
           <div className="col-span-6">
             <h1 className="mb-6 text-5xl font-bold">
@@ -95,7 +95,7 @@ export default function Home() {
 
       {/* features section */}
       <section className="max-w-[1440px] mx-auto px-8 py-24 border-t border-[#262626]">
-        <div className="grid grid-cols-12 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {/* feature 1 */}
           <div className="col-span-4 bg-[#0a0a0a] border border-[#262626] rounded-2xl p-8">
             <h3 className="mb-3">Catalog everything</h3>
@@ -140,7 +140,7 @@ export default function Home() {
           ].map((tech) => (
             <span
               key={tech}
-              className="border-[#262626] bg-[#0a0a0a] text-white px-4 py-2 rounded-full"
+              className="border border-[#262626] bg-[#0a0a0a] text-white px-4 py-2 rounded-full"
             >
               {tech}
             </span>
@@ -161,6 +161,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
