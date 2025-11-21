@@ -19,7 +19,8 @@ I am keeping the repo public to track my progress and document my growth as a de
 
 - Add new clothing items through a form  
 - Display all clothing items with a name and image preview  
-- Delete clothing items  
+- Delete clothing items
+- Edit clothing items  
 - Persistent storage using localStorage  
 - Global state management with React Context  
 - Fully typed clothing and outfit models  
