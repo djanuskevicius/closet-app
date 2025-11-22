@@ -11,12 +11,12 @@ export default function NavBar() {
   return (
     <nav className="h-16 border-b border-[#262626] sticky top-0 bg-black/90 backdrop-blur z-50">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 h-full flex items-center justify-between">
-        {/* Logo */}
+        {/* logo */}
         <Link href="/" className="text-white text-sm sm:text-base">
           closet-app
         </Link>
 
-        {/* Desktop links */}
+        {/* desktop links */}
         <div className="hidden md:flex gap-8">
           <Link
             href="/wardrobe"
@@ -40,7 +40,7 @@ export default function NavBar() {
           </Link>
         </div>
 
-        {/* Desktop buttons */}
+        {/* desktop buttons */}
         <div className="hidden md:flex gap-3">
           <a
             href="https://github.com/djanuskevicius/closet-app"
@@ -50,15 +50,17 @@ export default function NavBar() {
           >
             View GitHub
           </a>
-          <Link
-            href="/wardrobe"
-            className="bg-[#22D3EE] hover:bg-[#0891b2] text-black rounded-xl px-3 py-1 border border-white/10 text-sm"
-          >
-            Open App
-          </Link>
+          {pathname !== "/wardrobe" && pathname !== "/outfits" && (
+            <Link
+              href="/wardrobe"
+              className="bg-[#22D3EE] hover:bg-[#0891b2] text-black rounded-xl px-3 py-1 border border-white/10 text-sm"
+            >
+              Open Wardrobe
+            </Link>
+          )}
         </div>
 
-        {/* Mobile hamburger */}
+        {/* mobile hamburger */}
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden text-white text-xl"
@@ -67,7 +69,7 @@ export default function NavBar() {
         </button>
       </div>
 
-      {/* Mobile dropdown */}
+      {/* mobile dropdown */}
       {open && (
         <div className="md:hidden bg-black border-t border-[#262626] px-4 py-3 flex flex-col gap-3">
           <Link
