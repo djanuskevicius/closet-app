@@ -13,15 +13,13 @@ const initialFormData: Omit<Clothing, "id"> = {
   notes: "",
 };
 
-export default function Form({
-  action,
-  item,
-  onDone,
-}: {
+type FormProps = {
   action: "add" | "edit";
   item?: Clothing;
   onDone?: () => void;
-}) {
+};
+
+export default function Form({ action, item, onDone }: FormProps) {
   const { addClothing, updateClothing } = useWardrobe();
   const [formData, setFormData] = useState<Omit<Clothing, "id">>(() => {
     if (action === "edit" && item) {
@@ -112,7 +110,7 @@ export default function Form({
         onChange={handleChange}
       />
       <button type="submit">
-        {action === "add" ? "Add " : "Edit "}Clothing Item
+        {action === "add" ? "Add Item" : "Save Changes"}
       </button>
     </form>
   );
