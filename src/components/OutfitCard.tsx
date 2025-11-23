@@ -28,7 +28,7 @@ export default function OutfitCard({ outfit }: { outfit: Outfit }) {
         <button
           type="button"
           onClick={handleDelete}
-          className="text-xs text-red-500 hover:text-red-400"
+          className="text-xs text-red-500 hover:text-red-400 cursor-pointer"
         >
           Delete
         </button>

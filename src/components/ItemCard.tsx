@@ -20,7 +20,7 @@ export default function ItemCard({ item }: ItemCardProps) {
   }
 
   return (
-    <li className="flex flex-row md:flex-col items-center gap-4 bg-[#0a0a0a] border border-[#262626] rounded-2xl p-4">
+    <li className="flex flex-row sm:flex-col md:flex-row items-center gap-4 bg-[#0a0a0a] border border-[#262626] rounded-2xl p-4">
       {/* image */}
       <div>
         <img

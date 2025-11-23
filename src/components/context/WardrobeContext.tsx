@@ -15,6 +15,8 @@ import {
   saveOutfits,
 } from "@/lib/storage";
 
+import { mockClothingItems } from "@/mocks/mockClothingItems";
+
 type WardrobeContextValue = {
   clothing: Clothing[];
   outfits: Outfit[];
@@ -23,6 +25,7 @@ type WardrobeContextValue = {
   removeClothing: (id: string) => void;
   addOutfit: (name: string, clothingItemIds: string[]) => void;
   removeOutfit: (id: string) => void;
+  populateWithMockItems: () => void;
 };
 
 const WardrobeContext = createContext<WardrobeContextValue | null>(null);
@@ -95,6 +98,13 @@ export function WardrobeProvider({ children }: WardrobeProviderProps) {
     setOutfits((prev) => prev.filter((outfit) => outfit.id !== id));
   }
 
+  function populateWithMockItems() {
+    setClothing((prev) => {
+      if (prev.length > 0) return prev;
+      return mockClothingItems;
+    });
+  }
+
   const value: WardrobeContextValue = {
     clothing,
     outfits,
@@ -103,6 +113,7 @@ export function WardrobeProvider({ children }: WardrobeProviderProps) {
     removeClothing,
     addOutfit,
     removeOutfit,
+    populateWithMockItems,
   };
 
   return (

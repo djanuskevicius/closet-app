@@ -45,7 +45,7 @@ export default function OutfitsPage() {
   );
 
   return (
-    <main>
+    <main className="bg-black">
       <section className="max-w-[1440px] mx-auto px-4 sm:px-8 pt-16 pb-24">
         {/* header */}
         <div className="mb-10">
@@ -62,7 +62,7 @@ export default function OutfitsPage() {
           {/* outfits list */}
           <div className="w-full md:w-[60%]">
             {outfits.length === 0 ? (
-              <div className="border border-[#262626] rounded-2xl p-10 text-center text-sm text-[#737373]">
+              <div className="border border-[#262626] bg-[#0a0a0a] rounded-2xl p-10 text-center text-sm text-[#737373]">
                 You don&apos;t have any outfits yet. Create one using the form
                 on the right.
               </div>

@@ -15,7 +15,7 @@ export default function Wardrobe() {
   const [searchQuery, setSearchQuery] = useState("");
   const [open, setOpen] = useState(false);
 
-  const { clothing } = useWardrobe();
+  const { clothing, populateWithMockItems } = useWardrobe();
 
   const filteredClothing = clothing.filter((item) => {
     const matchesCategory =
@@ -57,13 +57,22 @@ export default function Wardrobe() {
     <main className="min-h-screen bg-black">
       <section className="max-w-[1440px] mx-auto px-4 sm:px-8 pt-16 pb-24">
         {/* header */}
-        <div className="flex mb-10">
+        <div className="flex mb-10 justify-between">
           <div>
             <h1 className="text-3xl sm:text-4xl font-bold mb-2">Wardrobe</h1>
             <p className="text-sm sm:text-base text-[#737373] max-w-xl">
               View, filter, and manage your clothing items in one place.
             </p>
           </div>
+          {clothing.length === 0 && (
+            <button
+              type="button"
+              onClick={populateWithMockItems}
+              className="bg-[#22D3EE] hover:bg-[#0891b2] text-black rounded-xl px-4 py-2 text-sm border border-white/10 cursor-pointer font-bold"
+            >
+              Populate with demo items
+            </button>
+          )}
         </div>
 
         {/* filter bar */}
