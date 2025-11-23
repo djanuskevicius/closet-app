@@ -19,6 +19,9 @@ type FormProps = {
   onDone?: () => void;
 };
 
+const formInputStyle =
+  "bg-black border border-[#262626] rounded-lg px-3 py-2 text-sm outline-none placeholder:text-[#525252]";
+
 export default function Form({ action, item, onDone }: FormProps) {
   const { addClothing, updateClothing } = useWardrobe();
   const [formData, setFormData] = useState<Omit<Clothing, "id">>(() => {
@@ -47,8 +50,10 @@ export default function Form({ action, item, onDone }: FormProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (action === "add") {
+      if (!onDone) return;
       addClothing(formData);
       setFormData(initialFormData);
+      onDone();
     } else if (action === "edit") {
       if (!item) return;
       if (!onDone) return;
@@ -58,7 +63,7 @@ export default function Form({ action, item, onDone }: FormProps) {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col gap-2">
       <input
         type="text"
         name="name"
@@ -66,12 +71,14 @@ export default function Form({ action, item, onDone }: FormProps) {
         value={formData.name}
         onChange={handleChange}
         required
+        className={formInputStyle}
       />
       <select
         name="category"
         onChange={handleChange}
         value={formData.category}
         required
+        className={formInputStyle}
       >
         <option value="top">Top</option>
         <option value="bottom">Bottom</option>
@@ -86,6 +93,7 @@ export default function Form({ action, item, onDone }: FormProps) {
         value={formData.color}
         onChange={handleChange}
         required
+        className={formInputStyle}
       />
       <input
         type="text"
@@ -94,6 +102,7 @@ export default function Form({ action, item, onDone }: FormProps) {
         value={formData.brand}
         onChange={handleChange}
         required
+        className={formInputStyle}
       />
       <input
         type="text"
@@ -102,14 +111,19 @@ export default function Form({ action, item, onDone }: FormProps) {
         value={formData.imageUrl}
         onChange={handleChange}
         required
+        className={formInputStyle}
       />
       <textarea
         name="notes"
         placeholder="Notes"
         value={formData.notes}
         onChange={handleChange}
+        className={formInputStyle}
       />
-      <button type="submit">
+      <button
+        type="submit"
+        className="bg-[#111111] hover:bg-white/5 text-white text-sm rounded-xl py-2 border border-white/10 hover:cursor-pointer"
+      >
         {action === "add" ? "Add Item" : "Save Changes"}
       </button>
     </form>

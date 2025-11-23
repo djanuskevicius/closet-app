@@ -156,14 +156,6 @@ export default function Wardrobe() {
               ))}
             </ul>
           )}
-
-          {/* form side panel */}
-          <aside className="bg-[#0a0a0a] border border-[#262626] rounded-2xl p-4 sm:p-6">
-            <h2 className="text-lg font-semibold mb-2">Add new item</h2>
-            <p className="text-xs text-[#737373] mb-4">
-              Fill out the form to add a new clothing item to your wardrobe.
-            </p>
-          </aside>
         </div>
       </section>
     </main>
