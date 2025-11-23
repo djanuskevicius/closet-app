@@ -57,7 +57,7 @@ export default function Wardrobe() {
     <main className="min-h-screen bg-black">
       <section className="max-w-[1440px] mx-auto px-4 sm:px-8 pt-16 pb-24">
         {/* header */}
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-10">
+        <div className="flex mb-10">
           <div>
             <h1 className="text-3xl sm:text-4xl font-bold mb-2">Wardrobe</h1>
             <p className="text-sm sm:text-base text-[#737373] max-w-xl">
@@ -115,7 +115,7 @@ export default function Wardrobe() {
                 onClick={() => {
                   setOpen(true);
                 }}
-                className="bg-[#111111] hover:bg-white/5 text-white text-sm rounded-lg px-12 py-2 border border-white/10 hover:cursor-pointer"
+                className="w-full bg-[#22D3EE] hover:bg-[#0891b2] text-black rounded-xl px-12 py-2 text-sm border border-white/10 cursor-pointer"
               >
                 Add Item
               </button>

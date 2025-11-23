@@ -122,7 +122,7 @@ export default function Form({ action, item, onDone }: FormProps) {
       />
       <button
         type="submit"
-        className="bg-[#111111] hover:bg-white/5 text-white text-sm rounded-xl py-2 border border-white/10 hover:cursor-pointer"
+        className="w-full bg-[#22D3EE] hover:bg-[#0891b2] text-black rounded-xl px-3 py-2 text-sm border border-white/10 cursor-pointer"
       >
         {action === "add" ? "Add Item" : "Save Changes"}
       </button>
