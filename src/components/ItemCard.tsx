@@ -6,11 +6,22 @@ import type { Clothing } from "@/types/clothing";
 import { useWardrobe } from "@/components/context/WardrobeContext";
 import Form from "@/components/Form";
 
-export default function ItemCard({ item }: { item: Clothing }) {
+type ItemCardProps = {
+  item: Clothing;
+};
+
+export default function ItemCard({ item }: ItemCardProps) {
   const [open, setOpen] = useState(false);
   const { removeClothing } = useWardrobe();
+
+  function handleDelete() {
+    if (!confirm("Delete this item?")) return;
+    removeClothing(item.id);
+  }
+
   return (
-    <li className="flex items-center gap-4 bg-[#0a0a0a] border border-[#262626] rounded-2xl p-4">
+    <li className="flex flex-row md:flex-row sm:flex-col items-center gap-4 bg-[#0a0a0a] border border-[#262626] rounded-2xl p-4">
+      {/* image */}
       <div>
         <img
           src={item.imageUrl}
@@ -18,22 +29,23 @@ export default function ItemCard({ item }: { item: Clothing }) {
           className="h-24 w-24 object-cover bg-transparent rounded-lg"
         />
       </div>
+
+      {/* details */}
       <div>
-        <h3 className="mb-2 text-lg font-semibold">
-          {item.brand} {item.name}
-        </h3>
-        <div className="text-[#737373] text-sm mb-4">
+        <div className="mb-2 ">
+          <h3 className="text-lg font-semibold">{item.name}</h3>
+          <p className="text-xs text-[#737373]">{item.brand}</p>
+        </div>
+
+        <div className="text-[#737373] text-sm mb-4 capitalize">
           <p>
             <span className="text-white">Color:</span> {item.color}
-          </p>
-          <p>
-            <span className="text-white">Brand:</span> {item.brand}
           </p>
           <p>
             <span className="text-white">Category:</span> {item.category}
           </p>
           {item.notes && (
-            <p>
+            <p className="normal-case">
               <span className="text-white">Notes:</span> {item.notes}
             </p>
           )}
@@ -42,10 +54,7 @@ export default function ItemCard({ item }: { item: Clothing }) {
         <div className="flex gap-3 ">
           <button
             className="bg-[#111111] hover:bg-white/5 text-red-500 text-sm rounded-xl px-3 py-1 border border-white/10 hover:cursor-pointer"
-            onClick={() => {
-              if (!confirm("Delete this item?")) return;
-              removeClothing(item.id);
-            }}
+            onClick={handleDelete}
           >
             Delete
           </button>

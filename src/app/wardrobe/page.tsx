@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useWardrobe } from "@/components/context/WardrobeContext";
 import Form from "@/components/Form";
 import ItemCard from "@/components/ItemCard";
+import Modal from "@/components/Modal";
 
 type CategoryFilter = "all" | Clothing["category"];
 
@@ -12,6 +13,7 @@ export default function Wardrobe() {
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryFilter>("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [open, setOpen] = useState(false);
 
   const { clothing } = useWardrobe();
 
@@ -62,13 +64,11 @@ export default function Wardrobe() {
               View, filter, and manage your clothing items in one place.
             </p>
           </div>
-
-          {/* will add a modal later */}
         </div>
 
         {/* filter bar */}
-        <div className="mb-10 bg-[#0a0a0a] border border-[#262626] rounded-2xl px-4 sm:px-6 py-4 sm:py-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col sm:flex-row gap-4 sm:items-center">
+        <div className="mb-10 bg-[#0a0a0a] border border-[#262626] rounded-2xl px-4 sm:px-6 py-4 sm:py-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col md:flex-row gap-4 md:items-center">
             {/* category */}
             <div className="flex flex-col gap-1">
               <label
@@ -94,7 +94,7 @@ export default function Wardrobe() {
             </div>
 
             {/* search */}
-            <div className="flex flex-col gap-1 sm:min-w-[220px]">
+            <div className="flex flex-col gap-1 md:min-w-[220px]">
               <label
                 htmlFor="search"
                 className="text-xs uppercase tracking-wide text-[#737373]"
@@ -110,6 +110,28 @@ export default function Wardrobe() {
                 className="bg-black border border-[#262626] rounded-lg px-3 py-2 text-sm outline-none placeholder:text-[#525252]"
               />
             </div>
+            <div className="self-center md:self-end">
+              <button
+                onClick={() => {
+                  setOpen(true);
+                }}
+                className="bg-[#111111] hover:bg-white/5 text-white text-sm rounded-lg px-12 py-2 border border-white/10 hover:cursor-pointer"
+              >
+                Add Item
+              </button>
+              <Modal
+                isOpen={open}
+                onClose={() => setOpen(false)}
+                title="Add Item"
+              >
+                <Form
+                  action="add"
+                  onDone={() => {
+                    setOpen(false);
+                  }}
+                />
+              </Modal>
+            </div>
           </div>
 
           {/* count */}
@@ -119,7 +141,7 @@ export default function Wardrobe() {
           </div>
         </div>
 
-        {/* content: grid + form */}
+        {/* content */}
         <div className="grid grid-cols-1 lg:grid-cols-[2fr,1fr] gap-10 items-start">
           {/* items grid / empty state */}
           {filteredClothing.length === 0 ? (
@@ -141,7 +163,6 @@ export default function Wardrobe() {
             <p className="text-xs text-[#737373] mb-4">
               Fill out the form to add a new clothing item to your wardrobe.
             </p>
-            <Form action="add" />
           </aside>
         </div>
       </section>
