@@ -1,29 +1,39 @@
-# Closet Organizer (WIP)
+# Closet Organizer
 
-A simple wardrobe management app built with **Next.js, React, and TypeScript**.  
+A simple wardrobe management app built with **Next.js, React, TypeScript, and Tailwind CSS**.  
 This is part of my preparation for the **Vinted Academy Web Engineering** application and a way to practice real-world React state management, TypeScript types, and data flow.
 
 ---
 
-## Work in Progress
+## Live Demo
 
-This project is still early.  
-The core functionality is working,  
-but several planned features like outfit creation, filtering, and better UI are still under development.
-
-I am keeping the repo public to track my progress and document my growth as a developer.
+**[https://closet-app-djanuskevicius.vercel.app/](https://closet-app-iota.vercel.app/)**  
 
 ---
 
 ## Features
 
-- Add new clothing items through a form  
-- Display all clothing items with a name and image preview  
-- Delete clothing items
-- Edit clothing items  
-- Persistent storage using localStorage  
-- Global state management with React Context  
-- Fully typed clothing and outfit models  
+### Wardrobe
+- Add new clothing items (name, brand, color, category, notes, image)
+- Edit existing items through a modal
+- Delete items
+- Filter by category
+- Search by brand or item name
+- Responsive layout
+- LocalStorage persistence
+- Optional demo seeding with mock items (for fast testing)
+
+### Outfits
+- Create outfits by grouping clothing items
+- Give each outfit a custom name
+- Delete outfits
+- LocalStorage persistence
+
+### Core Architecture
+- Global state handled with React Context + custom hooks
+- Local state for forms and selections
+- Strong TypeScript typing across components and context
+- Modular component structure
 
 ---
 
@@ -37,32 +47,16 @@ I am keeping the repo public to track my progress and document my growth as a de
 
 ---
 
-## Run Locally
+## Design Process
 
-1. Clone the repository
-   ```bash
-   git clone https://github.com/djanuskevicius/closet-app.git
-   cd closet-app
-   ```
+To speed up the design phase, I generated the initial layout using **Figma AI**,  
+then refined spacing, structure, responsiveness, and implemented all UI elements manually with Tailwind and React.
 
-2. Install dependencies  
-   ```bash
-   npm install
-   ```
-
-3. Start the development server  
-   ```bash
-   npm run dev
-   ```
-
-4. Open  
-   ```
-   http://localhost:3000
-   ```
+This let me focus more time on state management, data flow, and building out real functionality.
 
 ---
 
 ## Notes
 
 This is a learning focused project.  
-The goal is clean code, good architecture and understanding how React state flows in a real app.
+The goal is to achieve clean code, good architecture, and an understanding of how React state flows in a real app.
